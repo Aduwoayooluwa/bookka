@@ -1,6 +1,6 @@
 "use client"
 
-import { Icons } from "@/components/other/icons"
+// import { Icons } from "@/components/other/icons"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -17,9 +17,9 @@ export default function CreateAccount() {
   return (
     <Card>
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl">Create an account</CardTitle>
+        <CardTitle className="text-2xl">Login to your account</CardTitle>
         <CardDescription>
-          Enter your DID below to create your account
+          Enter your DID below to Access your account
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
@@ -30,21 +30,18 @@ export default function CreateAccount() {
           </div>
           <div className="relative flex justify-center text-xs uppercase">
             <span className="bg-background px-2 text-muted-foreground">
-              Create Account 
+              Access Account 
             </span>
           </div>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" />
+          <Label htmlFor="email">DID</Label>
+          <Input id="did" type="text" placeholder="Enter DID" />
         </div>
-        <div className="grid gap-2">
-          <Label htmlFor="password">Password</Label>
-          <Input id="password" type="password" />
-        </div>
+      
       </CardContent>
       <CardFooter>
-        <Button className="w-full">Create account</Button>
+        <Button className="w-full">Access account</Button>
       </CardFooter>
     </Card>
   )
