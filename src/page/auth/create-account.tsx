@@ -1,7 +1,6 @@
 "use client"
-
-// import { Icons } from "@/components/other/icons"
 import { Button } from "@/components/ui/button"
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -12,8 +11,30 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import CreateDid from "./create-did";
+import { PostRequest } from "@/api/apiHandler"
+import { useToast } from "@/components/ui/use-toast"
 
 export default function CreateAccount() {
+
+  const [inputDid, setInputDid] = useState("");
+  const { toast } = useToast();
+
+  function handleDidChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { value } = e.target;
+    setInputDid(value);
+  }
+
+  async function onAccessAccount() {
+    return await PostRequest("auth/auth-did", {
+        userDid: inputDid
+    }).then((res) => {
+      toast({
+            description:res.message,
+        })
+    })
+  }
+
   return (
     <Card>
       <CardHeader className="space-y-1">
@@ -29,20 +50,25 @@ export default function CreateAccount() {
             <span className="w-full border-t" />
           </div>
           <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-background px-2 text-muted-foreground">
+            <span  className="bg-background px-2 text-muted-foreground">
               Access Account 
             </span>
           </div>
         </div>
         <div className="grid gap-2">
           <Label htmlFor="email">DID</Label>
-          <Input id="did" type="text" placeholder="Enter DID" />
+          <Input value={inputDid} onChange={handleDidChange} id="did" type="text" placeholder="Enter DID" />
         </div>
       
       </CardContent>
-      <CardFooter>
-        <Button className="w-full">Access account</Button>
+      <CardFooter className="flex-col">
+        <div className="w-full my-3">
+          <Button onClick={onAccessAccount} className="w-full">Access account</Button>
+        </div>
+
+      <CreateDid /> 
       </CardFooter>
+
     </Card>
   )
 }
