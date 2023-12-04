@@ -14,25 +14,30 @@ import { Label } from "@/components/ui/label"
 import CreateDid from "./create-did";
 import { PostRequest } from "@/api/apiHandler"
 import { useToast } from "@/components/ui/use-toast"
+import { useRouter } from "next/navigation";
 
 export default function CreateAccount() {
 
   const [inputDid, setInputDid] = useState("");
   const { toast } = useToast();
+  const router = useRouter();
 
   function handleDidChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { value } = e.target;
     setInputDid(value);
   }
 
+
   async function onAccessAccount() {
     return await PostRequest("auth/auth-did", {
         userDid: inputDid
     }).then((res) => {
       toast({
-            description:res.message,
-        })
+        description: res.message,
+      });
+      router.push("/preferences")
     })
+    
   }
 
   return (
