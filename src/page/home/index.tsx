@@ -1,7 +1,8 @@
+"use client"
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react'
-import { Footer } from 'react-day-picker';
+import Footer  from './components/Footer';
 import Navbar from '../layout/Navigation';
 import FeaturesSection from './components/Features';
 import HowItWorksSection from './components/HowItWorks';

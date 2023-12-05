@@ -1,10 +1,10 @@
-import DashboardPage from '@/dashboard'
+import HomePage from '@/page/home'
 import Image from 'next/image'
 
 export default function Home() {
   return (
     <main>
-      <DashboardPage />
+      <HomePage />
    </main>
   )
 }
