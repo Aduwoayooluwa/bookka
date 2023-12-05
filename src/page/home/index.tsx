@@ -14,13 +14,14 @@ const imgLink = "https://img.freepik.com/free-vector/account-concept-illustratio
 const index = (props: Props) => {
   return (
       <div className="">
-    <div className='w-full rounded-b-[4rem] bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100'>
+    <div className='w-full rounded-b-[4rem] bg-white'>
      <Navbar />
-      <motion.div
+        <div className="flex flex-wrap justify-around items-center">
+          <motion.div
         initial={{ scale: 0.9}}
         animate={{ scale: 1,  }}
         transition={{ duration: 1.5 }}
-        className="text-center p-10"
+        className="text-start w-full md:w-[60%] p-10"
       >
         <h1 className="text-4xl font-semibold">A Decentralized Invoice & Bookkeeping Platform</h1>
         <p className="text-xl mt-4">Effortlessly manage your business finances.</p>
@@ -37,6 +38,7 @@ const index = (props: Props) => {
       >
         <Image src={imgLink} alt="Bookkeeping" width={500} height={300} />
           </motion.div>
+      </div>
         </div>
           <FeaturesSection />
           <HowItWorksSection />
