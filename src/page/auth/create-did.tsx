@@ -13,14 +13,20 @@ import { Button } from "@/components/ui/button";
 import { PostRequest } from "@/api/apiHandler";
 
 export default function CreateDid() {
-    const [generatedDid, setGeneratedDid] = useState<string>("")
+    const [generatedDid, setGeneratedDid] = useState<string>("");
+    const [isLoading, setIsLoading] = useState(false)
 
     async function onGenerateDid() {
-        return await PostRequest("auth/create-did").then((res) => {
-            console.log(res)
-            setGeneratedDid(res?.userDid)
-            
-        })
+        setIsLoading(true);
+        try {
+            const response = await PostRequest("auth/create-did");   
+            console.log(response);
+            setGeneratedDid(response?.userDid);
+            setIsLoading(false)
+        }
+        catch (error) {
+            setIsLoading(false);
+        }
     }
 
     return (
@@ -30,12 +36,13 @@ export default function CreateDid() {
                 <DialogHeader>
                 <DialogTitle>Generate your Own DID</DialogTitle>
                     <DialogDescription className="p-3">
+                        <p className="text-xs text-gray-600 md:text-sm">Copy the generated DID, close the modal and paste it on the Access Account page.</p>
                         <textarea value={generatedDid} readOnly className="outline-none p-3 border border-gray.500 w-full h-[200px] overflow-auto" placeholder="Your Generated DID will appeear here..">
                             
                         </textarea>
                         
 
-                    <Button onClick={onGenerateDid}>Generate</Button>
+                        <Button disabled={isLoading} onClick={onGenerateDid}>{ isLoading ? "Generating.." : "Generate"}</Button>
                     
                 </DialogDescription>
                 </DialogHeader>

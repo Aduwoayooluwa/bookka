@@ -21,7 +21,7 @@ export default function HomePage() {
         transition={{ duration: 1.5 }}
         className="text-center p-10"
       >
-        <h1 className="text-4xl font-semibold">Your Invoice & Bookkeeping Solution</h1>
+        <h1 className="text-4xl font-semibold">A Decentralized Invoice & Bookkeeping Platform</h1>
         <p className="text-xl mt-4">Effortlessly manage your business finances.</p>
         <button className="mt-6 rounded-full bg-blue-500 text-white py-2 px-4  hover:bg-blue-600">
           <Link href="/auth">Get Started</Link>

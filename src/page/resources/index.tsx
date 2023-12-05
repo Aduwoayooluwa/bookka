@@ -22,11 +22,11 @@ const PreferenceSelector: React.FC = () => {
   };
 
   return (
-      <main className="flex flex-col p-3 justify-center items-center h-screen">
+      <main className="flex flex-col p-3 justify-center items-center h-full">
         <div>
             <p className="font-medium text-lg">Select your focus: 📚 Bookkeeping for financial tracking, or 📄 Invoicing for managing client bills</p>
         </div>
-        <div className="flex items-center">
+        <div className="flex flex-col md:flex-row items-center">
           
             <motion.div 
                 className="p-10 m-5 bg-blue-500 text-white rounded-lg cursor-pointer"

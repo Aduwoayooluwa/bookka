@@ -21,6 +21,7 @@ export default function CreateAccount() {
   const [inputDid, setInputDid] = useState("");
   const { toast } = useToast();
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false)
 
   function handleDidChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { value } = e.target;
@@ -29,14 +30,24 @@ export default function CreateAccount() {
 
 
   async function onAccessAccount() {
-    return await PostRequest("auth/auth-did", {
+    setIsLoading(true);
+    try {
+      const response = await PostRequest("auth/auth-did", {
         userDid: inputDid
-    }).then((res) => {
-      toast({
-        description: res.message,
       });
-      router.push("/preferences")
-    })
+       toast({
+          description: response.message,
+        });
+      router.push("/preference");
+      setIsLoading(false)
+    }
+    catch (error: any) {
+      setIsLoading(false)
+      toast({
+          title: "Ah! Something webt wrong!",
+          description: error.message,
+        });
+    }
     
   }
 
@@ -68,7 +79,7 @@ export default function CreateAccount() {
       </CardContent>
       <CardFooter className="flex-col">
         <div className="w-full my-3">
-          <Button onClick={onAccessAccount} className="w-full">Access account</Button>
+          <Button onClick={onAccessAccount} className={`w-full ${isLoading && "bg-gray-700 text-white"}`}>{isLoading ? "Verifying DID.." : "Access account"}</Button>
         </div>
 
       <CreateDid /> 
