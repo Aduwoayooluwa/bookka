@@ -6,10 +6,10 @@ import Web5Config from "./Web5Config";
 import CreateAccount from '../auth/create-account';
 
 const steps = [
-  {
-    title: "Access Account",
-    content: <CreateAccount />
-  },
+  // {
+  //   title: "Access Account",
+  //   content: <CreateAccount />
+  // },
   {
     title: 'Enable Protocol',
     content: <Web5Config />
