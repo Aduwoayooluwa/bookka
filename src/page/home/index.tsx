@@ -1,16 +1,15 @@
-"use client"
-
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import React from 'react'
+import { Footer } from 'react-day-picker';
 import Navbar from '../layout/Navigation';
-import Image from "next/image"
 import FeaturesSection from './components/Features';
 import HowItWorksSection from './components/HowItWorks';
-import Footer from './components/Footer';
-import Link from "next/link"
+import Image from "next/image"
 
-let imgLink  = "https://img.freepik.com/free-vector/account-concept-illustration_114360-279.jpg?w=740&t=st=1701702671~exp=1701703271~hmac=a6fe2e2db22ed260bcf41812d92fafa89417da7cacb8ecb0f081477ae5f8c3e1"
+type Props = {}
 
-export default function HomePage() {
+const index = (props: Props) => {
   return (
       <div className="">
     <div className='w-full rounded-b-[4rem] bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100'>
@@ -43,3 +42,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+export default index
