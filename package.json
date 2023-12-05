@@ -33,6 +33,7 @@
     "react-day-picker": "^8.9.1",
     "react-dom": "^18",
     "react-pdf": "^7.5.1",
+    "react-switch": "^7.0.0",
     "recharts": "^2.10.2",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7"

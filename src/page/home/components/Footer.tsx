@@ -49,8 +49,10 @@ const Footer = () => {
           </div>
         </div>
         <div className="pt-8 mt-8 border-t border-gray-700">
+          <p className="text-base text-gray-800 xl:text-center mb-3">Built With Love By Team Pegasus</p>
           <p className="text-base text-gray-800 xl:text-center">
-            &copy; {new Date().getFullYear()} Bookka. All rights reserved.
+
+            &copy; {new Date().getFullYear()} Bookka. All rights reserved. <Link href="https://ferratechnologies.com">Team Pegasus</Link>
           </p>
         </div>
       </div>
