@@ -7,7 +7,9 @@ export default function Page() {
             <div className="absolute top-0 w-full">
                 <Navigation />
             </div>
-            <Stepper />
+            <div className="container ">
+                <Stepper />
+            </div>
         </main>
     )
 }

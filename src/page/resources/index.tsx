@@ -6,19 +6,21 @@ import React, { useState } from 'react';
 type PreferenceType = 'bookkeeping' | 'invoice';
 
 const PreferenceSelector: React.FC = () => {
-  const [preference, setPreference] = useState<PreferenceType | null>("bookkeeping");
+  const [preference, setPreference] = useState<PreferenceType | string>("");
     const router = useRouter();
 
   const handleSelection = (type: PreferenceType) => {
     setPreference(type);
-    console.log(preference)
+
     if (preference === "invoice") {
     router.push("/invoice")
     }
     else if (preference === "bookkeeping") {
         router.push("/bookkeeping")
     }
-      
+    else {
+      return;
+      }
   };
 
   return (

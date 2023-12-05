@@ -1,12 +1,14 @@
 import React from "react";
-import CreateAccount from "@/page/auth/create-account";
+import Stepper from "@/page/resources/Stepper";
+import Navigation from "@/page/layout/Navigation";
 
-export default function AuthDid() {
+export default function Page() {
     return (
-        <main className="h-screen w-full grid place-items-center">
-          <div className="w-full  md:w-[40%]">
-              <CreateAccount />
-          </div>
+        <main className="overflow-hidden">
+            <div className="absolute top-0 w-full">
+                <Navigation />
+            </div>
+            <Stepper />
         </main>
     )
 }

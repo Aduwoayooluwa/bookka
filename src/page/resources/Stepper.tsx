@@ -1,10 +1,15 @@
 "use client"
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Preference from "./index"
 import Web5Config from "./Web5Config";
+import CreateAccount from '../auth/create-account';
 
 const steps = [
+  {
+    title: "Access Account",
+    content: <CreateAccount />
+  },
   {
     title: 'Enable Protocol',
     content: <Web5Config />
@@ -29,8 +34,48 @@ const Stepper = () => {
     exit: { opacity: 0, x: -100 },
   };
 
+    const lineVariants = {
+    inactive: { width: '0%' },
+    active: { width: '100%' },
+  };
+
+  const circleVariants = {
+    inactive: { scale: 1, background: '#fff' },
+    active: { scale: 1.2, background: '#0f62fe' },
+  };
+
   return (
-    <div className="stepper-container container h-screen grid place-items-center mx-auto">
+    <div className="stepper-container container py-10 h-screen grid place-items-center mx-auto">
+
+        <div className="steps-indicator flex justify-between w-full mb-4">
+        {steps.map((step, index) => (
+          <motion.div
+            key={step.title}
+            className="relative flex flex-col items-center"
+          >
+   
+            <motion.div
+              variants={circleVariants}
+              animate={currentStep >= index ? 'active' : 'inactive'}
+              className="w-8 h-8 rounded-full border-2 border-blue-500 flex items-center justify-center"
+            >
+              {index + 1}
+            </motion.div>
+
+            {index < steps.length - 1 && (
+              <motion.div
+                
+                className="h-1 bg-blue-500 absolute top-1/2 -right-full z-[-1]"
+                variants={lineVariants}
+                initial="inactive"
+                animate={currentStep > index ? 'active' : 'inactive'}
+                transition={{ duration: 0.5 }}
+                style={{ width: '200%' }} 
+              />
+            )}
+          </motion.div>
+        ))}
+      </div>
 
       <motion.div
         key={currentStep}
@@ -45,7 +90,7 @@ const Stepper = () => {
       </motion.div>
 
 
-      <div className="flex justify-between mt-4">
+      <div className="flex justify-between space-x-8 mt-4">
         {currentStep > 0 && (
           <motion.button
             whileHover={{ scale: 1.05 }}
