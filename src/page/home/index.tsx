@@ -8,6 +8,7 @@ import HowItWorksSection from './components/HowItWorks';
 import Image from "next/image"
 
 type Props = {}
+const imgLink = "https://img.freepik.com/free-vector/account-concept-illustration_114360-279.jpg?w=740&t=st=1701702671~exp=1701703271~hmac=a6fe2e2db22ed260bcf41812d92fafa89417da7cacb8ecb0f081477ae5f8c3e1"
 
 const index = (props: Props) => {
   return (
