@@ -51,3 +51,10 @@
     align-items: center;
     justify-content: center;
 }
+
+@media screen and (max-width: 768px) {
+  .hero-content{
+    width: 80%;
+    height: 80%;
+  }
+}

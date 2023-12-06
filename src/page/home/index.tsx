@@ -15,7 +15,7 @@ const imgLink =
 
 const index = (props: Props) => {
   return (
-    <div className="body bg-slate-100">
+    <div className="overflow-x-0 bg-slate-100">
       <div className=" w-full rounded-b-[4rem] bg-white">
         <Navbar />
         <div className="bg-slate-100 hero flex flex-wrap justify-around items-center">
@@ -25,17 +25,17 @@ const index = (props: Props) => {
             transition={{ duration: 1.5 }}
             className="text-start w-full md:w-[60%] p-10 hero-content "
           >
-            <h1 className=" border-black text-4xl text-center font-semibold">
+            <h1 className=" border-black md:text-4xl text-center font-semibold">
               Next-Gen Decentralized Bookkeeping <br /> & <br /> Invoicing
               Solution
             </h1>
-            <p className="text-xl text-center mt-16 mx-auto w-10/12">
+            <p className="md:text-xl text-center py-6 text-sm md:mx-auto m-0 md:w-10/12">
               Streamline Your Business Finances with Advanced Web5 Technology while experiencing a revolutionary approach to managing invoices
               and bookkeeping. 
             </p>
   
             {/* <div className="text-center"> */}
-            <button className="md:mt-12 md:ml-60 m-0 rounded-sm uppercase bg-blue-500 text-white py-6 px-6 hover:bg-blue-600 md:bg-blue-600 ">
+            <button className="lg:mt-12 xl:ml-72 lg:ml-32 md:ml-16 m-0 rounded-sm uppercase bg-blue-500 text-white py-6 px-6 hover:bg-blue-600 md:bg-blue-600 ">
               <Link href="/auth">Start Managing Your Finances Today</Link>
             </button>
             {/* </div> */}
