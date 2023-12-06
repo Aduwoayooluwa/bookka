@@ -26,7 +26,7 @@ const HowItWorksSection = () => {
   return (
     <div className="py-12 bg-slate-100 work-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="lg:text-center">
+      <div className="text-center">
           <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">how it works</h2>
           <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
            
@@ -36,7 +36,7 @@ const HowItWorksSection = () => {
           </p>
         </div>
         <div className="mt-10">
-          <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-6">
+          <dl className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-6">
             {steps.map((step, index) => (
               <div key={index} className="text-center">
                 <img src={step.icon} alt={step.title} className="mx-auto h-12 w-12 text-gray-400" />

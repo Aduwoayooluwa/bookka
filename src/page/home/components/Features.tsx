@@ -25,7 +25,7 @@ const FeaturesSection = () => {
   return (
     <div className="py-12 bg-white pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="lg:text-center">
+        <div className="text-center">
           <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">Features</h2>
           <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
             Everything you need to manage your finances
@@ -33,7 +33,7 @@ const FeaturesSection = () => {
         </div>
 
         <div className="mt-10">
-          <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-6 md:gap-y-10">
+          <dl className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:gap-y-10">
             {features.map((feature, index) => (
              <div className="flex flex-col" key={index}>
                <div className="flex  mt-16  mx-auto items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
