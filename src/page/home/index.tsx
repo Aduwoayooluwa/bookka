@@ -35,7 +35,7 @@ const index = (props: Props) => {
             </p>
   
             {/* <div className="text-center"> */}
-            <button className="mt-12 ml-60 rounded-sm uppercase bg-blue-500 text-white py-6 px-6 hover:bg-blue-600">
+            <button className="md:mt-12 md:ml-60 m-0 rounded-sm uppercase bg-blue-500 text-white py-6 px-6 hover:bg-blue-600 md:bg-blue-600 ">
               <Link href="/auth">Start Managing Your Finances Today</Link>
             </button>
             {/* </div> */}
