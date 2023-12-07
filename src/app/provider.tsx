@@ -6,7 +6,8 @@ export default function GeneralProvider({
   children: React.ReactNode
 }>) {
   return (
-      <div>
+    <div>
+      
           {children}
           <Toaster />
     </div>

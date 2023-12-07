@@ -10,7 +10,8 @@ const PreferenceSelector: React.FC = () => {
     const router = useRouter();
 
   const handleSelection = (type: PreferenceType) => {
-    setPreference(type);
+      setPreference(type);
+      console.log(type)
 
     if (preference === "invoice") {
     router.push("/invoice")

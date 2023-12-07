@@ -23,7 +23,7 @@ export default function CreateAccount() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false)
 
-  function handleDidChange(e: React.ChangeEvent<HTMLInputElement>) {
+function handleDidChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { value } = e.target;
     setInputDid(value);
   }

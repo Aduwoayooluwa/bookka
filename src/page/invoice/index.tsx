@@ -1,9 +1,10 @@
 import React from "react"
+import InvoiceForm from "./components/InvoiceForm"
 
 export default function Invoice() {
     return (
         <div>
-            This is the Invoice dashboard
+            <InvoiceForm />
         </div>
     )
 }
