@@ -1,8 +1,9 @@
 import Link from "next/link";
+import "../index.css";
 
 const Footer = () => {
   return (
-    <footer className="bg-white container mx-auto text-white">
+    <footer className="bg-white mx-auto text-white">
       <div className="w-full mx-auto px-4 py-10 md:py-12">
         <div className="xl:grid xl:grid-cols-4 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
@@ -19,9 +20,9 @@ const Footer = () => {
                 <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">Quick Links</h3>
                 <ul className="mt-4 space-y-4">
                   <li><a href="#" className="text-base text-gray-600 hover:text-black">Home</a></li>
-                  <li><a href="#" className="text-base text-gray-600 hover:text-black">About</a></li>
+                  {/* <li><a href="#" className="text-base text-gray-600 hover:text-black">About</a></li>
                   <li><a href="#" className="text-base text-gray-600 hover:text-black">Services</a></li>
-                  <li><a href="#" className="text-base text-gray-600 hover:text-black">Contact</a></li>
+                  <li><a href="#" className="text-base text-gray-600 hover:text-black">Contact</a></li> */}
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
@@ -43,6 +44,10 @@ const Footer = () => {
                 <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">Follow us</h3>
                 <div className="mt-4 flex space-x-6">
                   {/* remember: Social media icons... */}
+                  <ul className="mt-4 space-y-4">
+                  <li><a href="www.facebook.com" className="text-base text-gray-600 hover:text-black">Facebook</a></li>
+                  <li><a href="www.linkedin.com" className="text-base text-gray-600 hover:text-black">LinkedIn</a></li>
+                </ul>
                 </div>
               </div>
             </div>
