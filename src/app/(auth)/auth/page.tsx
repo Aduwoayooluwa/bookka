@@ -11,7 +11,7 @@ export default function Page() {
             </div>
             <div className="h-full grid place-items-center w-full">
                 <div className="w-full md:w-1/3">
-                    <CreateAccount />
+                    {/* <CreateAccount /> */}
                 </div>
             </div>
         </main>

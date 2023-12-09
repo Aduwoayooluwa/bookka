@@ -12,11 +12,11 @@ const steps = [
   // },
   {
     title: 'Enable Protocol',
-    content: <Web5Config />
+    content: <div></div>
   },
   {
     title: 'Choose Preference',
-    content: <Preference />
+    content: <div></div>
   }
 ];
 
