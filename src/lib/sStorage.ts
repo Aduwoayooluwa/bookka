@@ -4,6 +4,7 @@ export function ssSave(key: string, data: any) {
 
         sessionStorage.setItem(key, data);
     }
+    sessionStorage.setItem(key, data)
 }
 
 export function getSStorage(key: string) {

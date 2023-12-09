@@ -4,16 +4,19 @@ import { PostRequest } from "@/api/apiHandler";
 
 const url = `configure-invoice`
 export default function Web5Config() {
+    // state to  manage if the protocol has been configured
     const [protocolEnabled, setProtocolEnabled] = useState(false);
 
     const handleToggleProtocol = async (checked: boolean) => {
         setProtocolEnabled(checked);
         try {
 
+            // api endpoint consumption to set the protocol
             return await PostRequest(url).then((res) => {
                 setProtocolEnabled(checked);
             })
         } catch (error) {
+            // set to false if an error occur
             setProtocolEnabled(false);
         }
 

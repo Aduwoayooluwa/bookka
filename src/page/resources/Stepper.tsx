@@ -22,12 +22,14 @@ const steps = [
 
 
 const Stepper = () => {
+  // state to manage the current step
   const [currentStep, setCurrentStep] = useState(0);
 
-
+  // functions to move to the next step and previous step
   const nextStep = () => setCurrentStep((prev) => prev + 1);
   const prevStep = () => setCurrentStep((prev) => prev - 1);
 
+  // aimation variants. These is the animations used to animates each of the stepper elements and contentd. 
   const variants = {
     enter: { opacity: 0, x: 100 },
     center: { opacity: 1, x: 0 },
@@ -47,7 +49,7 @@ const Stepper = () => {
   return (
     <div className="stepper-container container py-10 h-screen grid place-items-center mx-auto">
 
-        <div className="steps-indicator flex justify-between w-full mb-4">
+        <div className="steps-indicator md:w-[500px] flex justify-between w-full mb-4">
         {steps.map((step, index) => (
           <motion.div
             key={step.title}
@@ -57,7 +59,7 @@ const Stepper = () => {
             <motion.div
               variants={circleVariants}
               animate={currentStep >= index ? 'active' : 'inactive'}
-              className="w-8 h-8 rounded-full border-2 border-blue-500 flex items-center justify-center"
+            className={`${index ? "text-black" : "text-white"} w-8 h-8 rounded-full border-2 border-blue-500 flex items-center justify-center`}
             >
               {index + 1}
             </motion.div>
