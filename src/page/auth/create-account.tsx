@@ -15,11 +15,12 @@ import CreateDid from "./create-did";
 import { PostRequest } from "@/api/apiHandler"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation";
+import { ssSave } from "@/lib/sStorage";
 
-export default function CreateAccount() {
+export default function CreateAccount({ setCurrentStep}: Readonly<{setCurrentStep: React.Dispatch<React.SetStateAction<number>>}>) {
 
   const [inputDid, setInputDid] = useState("");
-  const { toast } = useToast();
+  const { toast } = useToast(); 
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false)
 
@@ -34,11 +35,12 @@ function handleDidChange(e: React.ChangeEvent<HTMLInputElement>) {
     try {
       const response = await PostRequest("auth/auth-did", {
         userDid: inputDid
-      });
+      })
+      ssSave("userDid", inputDid);
        toast({
           description: response.message,
         });
-      router.push("/preference");
+      setCurrentStep((prev) => prev + 1);
       setIsLoading(false)
     }
     catch (error: any) {
