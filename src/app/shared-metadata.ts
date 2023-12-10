@@ -1,0 +1,1 @@
+export const openGraphImage = { images: ['https://firebasestorage.googleapis.com/v0/b/ecommerce-mercedy.appspot.com/o/logo.svg?alt=media&token=d3187dd8-4e39-48b3-be00-c5a3a3bb1d5e'] }
