@@ -40,7 +40,7 @@ const Navigation = (props: Props) => {
         
       </ol>
       
-      <Button className='border hidden md:flex border-blue-600 hover:bg-blue-600 hover:text-white bg-transparent text-blue-600'> <Link href="/auth">Get Started</Link></Button>
+      <Link  className='border hidden md:flex border-blue-600 hover:bg-blue-600 hover:text-white bg-transparent text-blue-600' href="/auth">Get Started</Link>
       <div className='flex md:hidden'>
         <Hamburger toggle={setIsNavOpen} toggled={isNavOpen} />
       </div>
@@ -77,7 +77,7 @@ const Navigation = (props: Props) => {
                     })
                 } 
                 
-                <Button className='border absolute bottom-32 border-white hover:bg-blue-600 hover:text-blue-500 bg-white text-blue-600'><Link href="/auth">Get Started</Link></Button>
+               <Link className='border absolute bottom-32 border-white hover:bg-blue-600 hover:text-blue-500 bg-white text-blue-600' href="/auth">Get Started</Link>
           </motion.ol>
           </motion.aside>
           </AnimatePresence>
