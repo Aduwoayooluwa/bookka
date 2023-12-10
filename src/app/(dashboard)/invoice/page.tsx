@@ -4,7 +4,7 @@ import React from "react";
 import { SelectValue, SelectTrigger, Select } from "@/components/ui/select";
 import { CardContent, Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Image from 'next/image'
+import Image from "next/image";
 import {
   TableHead,
   TableRow,
@@ -20,42 +20,55 @@ import {
 } from "@/components/ui/popover";
 import { Badge } from "@/components/ui/badge";
 import { ResponsivePie } from "@nivo/pie";
+import Link from "next/link";
 
 export default function Page() {
   return (
     <div className="bg-white">
       <header className="flex justify-between items-center border-b p-4">
         <div className="flex items-center space-x-4">
-        <Image src={"/logo.svg"} className='hidden md:flex' width={200} height={100} alt="bookka logo" />
+          <Image
+            src={"/logo.svg"}
+            className="hidden md:flex"
+            width={200}
+            height={100}
+            alt="bookka logo"
+          />
         </div>
       </header>
-     <div className="flex content">
-     <aside className="sticky top-0 h-screen w-56 bg-gray-100 text-gray-800 p-4">
-        <div className="flex items-center mb-4 space-x-1">
-         <h1 className="text-2xl" >Dashboard</h1>
-        </div>
-        <nav className="space-y-2">
-          <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-            <HomeIcon className="w-4 h-4" />
-            <span className="text-sm font-medium">Home</span>
-          </button>
-          <button className="w-full flex items-center space-x-2 bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-800">
-            <WalletIcon className="w-4 h-4" />
-            <span className="text-sm font-medium">Invoices</span>
-          </button>
-          <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-            <UsersIcon className="w-4 h-4" />
-            <span className="text-sm font-medium">Bookkeeping</span>
-          </button>
-          <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-            <TicketIcon className="w-4 h-4" />
-            <span className="text-sm font-medium">Tax</span>
-          </button>
-        </nav>
-      </aside>
+      <div className="flex content">
+        <aside className="sticky top-0 h-screen w-56 bg-gray-100 text-gray-800 p-4">
+          <div className="flex items-center mb-4 space-x-1">
+            <h1 className="text-2xl">Dashboard</h1>
+          </div>
+          <nav className="space-y-2">
+            <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+              <HomeIcon className="w-4 h-4" />
+              <span className="text-sm font-medium">Home</span>
+            </button>
+            <button className="w-full flex items-center space-x-2 bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-800">
+              <WalletIcon className="w-4 h-4" />
+              <span className="text-sm font-medium">Invoices</span>
+            </button>
+            <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+              <UsersIcon className="w-4 h-4" />
+              <span className="text-sm font-medium">Bookkeeping</span>
+            </button>
+            <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+              <TicketIcon className="w-4 h-4" />
+              <span className="text-sm font-medium">Tax</span>
+            </button>
+          </nav>
+        </aside>
 
-      <div className="flex-grow p-6">
-      <div className="grid grid-cols-3 gap-6 mt-6 cards">
+        <div className="flex-grow p-6">
+          <div className="flex justify-between items-center">
+            <h1 className="text-2xl">Invoice Dashboard</h1>
+            <Link href="/generate" className="px-2 py-1 bg-gray-800 text-white rounded-lg flex items-center space-x-2 text-sm">
+                Create Invoice
+            </Link>
+          </div>
+          <div className="grid grid-cols-3 gap-6 mt-6 cards">
             <Card className="w-full bg-red-200">
               <CardContent>
                 <FilesIcon className="text-gray-600 mb-2 mt-2" />
@@ -99,329 +112,329 @@ export default function Page() {
               </CardContent>
             </Card>
           </div>
-        <div className="flex-grow p-6 w-full table">
-          <div className="flex justify-between items-center mb-4">
-            <h1 className="text-lg font-medium">Transactions</h1>
-            <Button
-              className="px-2 py-1 bg-gray-800 text-white rounded-lg flex items-center space-x-2 text-sm"
-              type="button"
-            >
-              <DownloadIcon className="w-4 h-4" />
-              <span>Download</span>
-            </Button>
+          <div className="flex-grow p-6 w-full table">
+            <div className="flex justify-between items-center mb-4">
+              <h1 className="text-lg font-medium">Transactions</h1>
+              <Button
+                className="px-2 py-1 bg-gray-800 text-white rounded-lg flex items-center space-x-2 text-sm"
+                type="button"
+              >
+                <DownloadIcon className="w-4 h-4" />
+                <span>Download</span>
+              </Button>
+            </div>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Date</TableHead>
+                  <TableHead>Description</TableHead>
+                  <TableHead>Category</TableHead>
+                  <TableHead className="text-right">Amount</TableHead>
+                  <TableHead />
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Mar 12</TableCell>
+                  <TableCell>WeWork</TableCell>
+                  <TableCell>
+                    <span className="px-2 py-1 bg-red-200 text-red-800 rounded-md">
+                      <TagIcon className="w-4 h-4 inline-block mr-1" />
+                      Office
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-right">$175.00</TableCell>
+                  <TableCell>
+                    {/* <Popover>
+                    <PopoverTrigger>
+                      <button
+                        className="px-2 py-1 bg-transparent text-black hover:bg-gray-200 active:bg-gray-300 rounded"
+                        type="button"
+                      >
+                        <MoreVerticalIcon className="w-4 h-4" />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-40">
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <FileEditIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Edit</span>
+                      </button>
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <ShareIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Share</span>
+                      </button>
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <DeleteIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Delete</span>
+                      </button>
+                    </PopoverContent>
+                  </Popover> */}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Mar 13</TableCell>
+                  <TableCell>IKEA</TableCell>
+                  <TableCell>
+                    <span className="px-2 py-1 bg-blue-200 text-blue-800 rounded-md">
+                      <TagIcon className="w-4 h-4 inline-block mr-1" />
+                      Home
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-right">$450.00</TableCell>
+                  <TableCell>
+                    {/* <Popover>
+                    <PopoverTrigger>
+                      <button
+                        className="px-2 py-1 bg-transparent text-black hover:bg-gray-200 active:bg-gray-300 rounded"
+                        type="button"
+                      >
+                        <MoreVerticalIcon className="w-4 h-4" />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-40">
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <FileEditIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Edit</span>
+                      </button>
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <ShareIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Share</span>
+                      </button>
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <DeleteIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Delete</span>
+                      </button>
+                    </PopoverContent>
+                  </Popover> */}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Mar 14</TableCell>
+                  <TableCell>Home Depot</TableCell>
+                  <TableCell>
+                    <span className="px-2 py-1 bg-blue-200 text-blue-800 rounded-md">
+                      <TagIcon className="w-4 h-4 inline-block mr-1" />
+                      Home
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-right">$200.00</TableCell>
+                  <TableCell>
+                    {/* <Popover>
+                    <PopoverTrigger>
+                      <button
+                        className="px-2 py-1 bg-transparent text-black hover:bg-gray-200 active:bg-gray-300 rounded"
+                        type="button"
+                      >
+                        <MoreVerticalIcon className="w-4 h-4" />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-40">
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <FileEditIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Edit</span>
+                      </button>
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <ShareIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Share</span>
+                      </button>
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <DeleteIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Delete</span>
+                      </button>
+                    </PopoverContent>
+                  </Popover> */}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Mar 15</TableCell>
+                  <TableCell>Burger King</TableCell>
+                  <TableCell>
+                    <span className="px-2 py-1 bg-green-200 text-green-800 rounded-md">
+                      <TagIcon className="w-4 h-4 inline-block mr-1" />
+                      Food
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-right">$15.00</TableCell>
+                  <TableCell>
+                    {/* <Popover>
+                    <PopoverTrigger>
+                      <button
+                        className="px-2 py-1 bg-transparent text-black hover:bg-gray-200 active:bg-gray-300 rounded"
+                        type="button"
+                      >
+                        <MoreVerticalIcon className="w-4 h-4" />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-40">
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <FileEditIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Edit</span>
+                      </button>
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <ShareIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Share</span>
+                      </button>
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <DeleteIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Delete</span>
+                      </button>
+                    </PopoverContent>
+                  </Popover> */}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Mar 16</TableCell>
+                  <TableCell>WeWork</TableCell>
+                  <TableCell>
+                    <span className="px-2 py-1 bg-red-200 text-red-800 rounded-md">
+                      <TagIcon className="w-4 h-4 inline-block mr-1" />
+                      Office
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-right">$250.00</TableCell>
+                  <TableCell>
+                    {/* <Popover>
+                    <PopoverTrigger>
+                      <button
+                        className="px-2 py-1 bg-transparent text-black hover:bg-gray-200 active:bg-gray-300 rounded"
+                        type="button"
+                      >
+                        <MoreVerticalIcon className="w-4 h-4" />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-40">
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <FileEditIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Edit</span>
+                      </button>
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <ShareIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Share</span>
+                      </button>
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <DeleteIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Delete</span>
+                      </button>
+                    </PopoverContent>
+                  </Popover> */}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Mar 17</TableCell>
+                  <TableCell>IKEA</TableCell>
+                  <TableCell>
+                    <span className="px-2 py-1 bg-blue-200 text-blue-800 rounded-md">
+                      <TagIcon className="w-4 h-4 inline-block mr-1" />
+                      Home
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-right">$350.00</TableCell>
+                  <TableCell>
+                    {/* <Popover>
+                    <PopoverTrigger>
+                      <button
+                        className="px-2 py-1 bg-transparent text-black hover:bg-gray-200 active:bg-gray-300 rounded"
+                        type="button"
+                      >
+                        <MoreVerticalIcon className="w-4 h-4" />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-40">
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <FileEditIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Edit</span>
+                      </button>
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <ShareIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Share</span>
+                      </button>
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <DeleteIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Delete</span>
+                      </button>
+                    </PopoverContent>
+                  </Popover> */}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Mar 18</TableCell>
+                  <TableCell>Home Depot</TableCell>
+                  <TableCell>
+                    <span className="px-2 py-1 bg-blue-200 text-blue-800 rounded-md">
+                      <TagIcon className="w-4 h-4 inline-block mr-1" />
+                      Home
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-right">$100.00</TableCell>
+                  <TableCell>
+                    {/* <Popover>
+                    <PopoverTrigger>
+                      <button
+                        className="px-2 py-1 bg-transparent text-black hover:bg-gray-200 active:bg-gray-300 rounded"
+                        type="button"
+                      >
+                        <MoreVerticalIcon className="w-4 h-4" />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-40">
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <FileEditIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Edit</span>
+                      </button>
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <ShareIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Share</span>
+                      </button>
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <DeleteIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Delete</span>
+                      </button>
+                    </PopoverContent>
+                  </Popover> */}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Mar 19</TableCell>
+                  <TableCell>Burger King</TableCell>
+                  <TableCell>
+                    <span className="px-2 py-1 bg-green-200 text-green-800 rounded-md">
+                      <TagIcon className="w-4 h-4 inline-block mr-1" />
+                      Food
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-right">$20.00</TableCell>
+                  <TableCell>
+                    {/* <Popover>
+                    <PopoverTrigger>
+                      <button
+                        className="px-2 py-1 bg-transparent text-black hover:bg-gray-200 active:bg-gray-300 rounded"
+                        type="button"
+                      >
+                        <MoreVerticalIcon className="w-4 h-4" />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-40">
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <FileEditIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Edit</span>
+                      </button>
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <ShareIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Share</span>
+                      </button>
+                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                        <DeleteIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium">Delete</span>
+                      </button>
+                    </PopoverContent>
+                  </Popover> */}
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
           </div>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Date</TableHead>
-                <TableHead>Description</TableHead>
-                <TableHead>Category</TableHead>
-                <TableHead className="text-right">Amount</TableHead>
-                <TableHead />
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell>Mar 12</TableCell>
-                <TableCell>WeWork</TableCell>
-                <TableCell>
-                  <span className="px-2 py-1 bg-red-200 text-red-800 rounded-md">
-                    <TagIcon className="w-4 h-4 inline-block mr-1" />
-                    Office
-                  </span>
-                </TableCell>
-                <TableCell className="text-right">$175.00</TableCell>
-                <TableCell>
-                  <Popover>
-                    <PopoverTrigger>
-                      <Button
-                        className="px-2 py-1 bg-transparent text-black hover:bg-gray-200 active:bg-gray-300 rounded"
-                        type="button"
-                      >
-                        <MoreVerticalIcon className="w-4 h-4" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-40">
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <FileEditIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Edit</span>
-                      </button>
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <ShareIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Share</span>
-                      </button>
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <DeleteIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Delete</span>
-                      </button>
-                    </PopoverContent>
-                  </Popover>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Mar 13</TableCell>
-                <TableCell>IKEA</TableCell>
-                <TableCell>
-                  <span className="px-2 py-1 bg-blue-200 text-blue-800 rounded-md">
-                    <TagIcon className="w-4 h-4 inline-block mr-1" />
-                    Home
-                  </span>
-                </TableCell>
-                <TableCell className="text-right">$450.00</TableCell>
-                <TableCell>
-                  <Popover>
-                    <PopoverTrigger>
-                      <Button
-                        className="px-2 py-1 bg-transparent text-black hover:bg-gray-200 active:bg-gray-300 rounded"
-                        type="button"
-                      >
-                        <MoreVerticalIcon className="w-4 h-4" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-40">
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <FileEditIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Edit</span>
-                      </button>
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <ShareIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Share</span>
-                      </button>
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <DeleteIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Delete</span>
-                      </button>
-                    </PopoverContent>
-                  </Popover>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Mar 14</TableCell>
-                <TableCell>Home Depot</TableCell>
-                <TableCell>
-                  <span className="px-2 py-1 bg-blue-200 text-blue-800 rounded-md">
-                    <TagIcon className="w-4 h-4 inline-block mr-1" />
-                    Home
-                  </span>
-                </TableCell>
-                <TableCell className="text-right">$200.00</TableCell>
-                <TableCell>
-                  <Popover>
-                    <PopoverTrigger>
-                      <Button
-                        className="px-2 py-1 bg-transparent text-black hover:bg-gray-200 active:bg-gray-300 rounded"
-                        type="button"
-                      >
-                        <MoreVerticalIcon className="w-4 h-4" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-40">
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <FileEditIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Edit</span>
-                      </button>
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <ShareIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Share</span>
-                      </button>
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <DeleteIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Delete</span>
-                      </button>
-                    </PopoverContent>
-                  </Popover>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Mar 15</TableCell>
-                <TableCell>Burger King</TableCell>
-                <TableCell>
-                  <span className="px-2 py-1 bg-green-200 text-green-800 rounded-md">
-                    <TagIcon className="w-4 h-4 inline-block mr-1" />
-                    Food
-                  </span>
-                </TableCell>
-                <TableCell className="text-right">$15.00</TableCell>
-                <TableCell>
-                  <Popover>
-                    <PopoverTrigger>
-                      <Button
-                        className="px-2 py-1 bg-transparent text-black hover:bg-gray-200 active:bg-gray-300 rounded"
-                        type="button"
-                      >
-                        <MoreVerticalIcon className="w-4 h-4" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-40">
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <FileEditIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Edit</span>
-                      </button>
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <ShareIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Share</span>
-                      </button>
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <DeleteIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Delete</span>
-                      </button>
-                    </PopoverContent>
-                  </Popover>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Mar 16</TableCell>
-                <TableCell>WeWork</TableCell>
-                <TableCell>
-                  <span className="px-2 py-1 bg-red-200 text-red-800 rounded-md">
-                    <TagIcon className="w-4 h-4 inline-block mr-1" />
-                    Office
-                  </span>
-                </TableCell>
-                <TableCell className="text-right">$250.00</TableCell>
-                <TableCell>
-                  <Popover>
-                    <PopoverTrigger>
-                      <Button
-                        className="px-2 py-1 bg-transparent text-black hover:bg-gray-200 active:bg-gray-300 rounded"
-                        type="button"
-                      >
-                        <MoreVerticalIcon className="w-4 h-4" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-40">
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <FileEditIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Edit</span>
-                      </button>
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <ShareIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Share</span>
-                      </button>
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <DeleteIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Delete</span>
-                      </button>
-                    </PopoverContent>
-                  </Popover>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Mar 17</TableCell>
-                <TableCell>IKEA</TableCell>
-                <TableCell>
-                  <span className="px-2 py-1 bg-blue-200 text-blue-800 rounded-md">
-                    <TagIcon className="w-4 h-4 inline-block mr-1" />
-                    Home
-                  </span>
-                </TableCell>
-                <TableCell className="text-right">$350.00</TableCell>
-                <TableCell>
-                  <Popover>
-                    <PopoverTrigger>
-                      <Button
-                        className="px-2 py-1 bg-transparent text-black hover:bg-gray-200 active:bg-gray-300 rounded"
-                        type="button"
-                      >
-                        <MoreVerticalIcon className="w-4 h-4" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-40">
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <FileEditIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Edit</span>
-                      </button>
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <ShareIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Share</span>
-                      </button>
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <DeleteIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Delete</span>
-                      </button>
-                    </PopoverContent>
-                  </Popover>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Mar 18</TableCell>
-                <TableCell>Home Depot</TableCell>
-                <TableCell>
-                  <span className="px-2 py-1 bg-blue-200 text-blue-800 rounded-md">
-                    <TagIcon className="w-4 h-4 inline-block mr-1" />
-                    Home
-                  </span>
-                </TableCell>
-                <TableCell className="text-right">$100.00</TableCell>
-                <TableCell>
-                  <Popover>
-                    <PopoverTrigger>
-                      <Button
-                        className="px-2 py-1 bg-transparent text-black hover:bg-gray-200 active:bg-gray-300 rounded"
-                        type="button"
-                      >
-                        <MoreVerticalIcon className="w-4 h-4" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-40">
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <FileEditIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Edit</span>
-                      </button>
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <ShareIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Share</span>
-                      </button>
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <DeleteIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Delete</span>
-                      </button>
-                    </PopoverContent>
-                  </Popover>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Mar 19</TableCell>
-                <TableCell>Burger King</TableCell>
-                <TableCell>
-                  <span className="px-2 py-1 bg-green-200 text-green-800 rounded-md">
-                    <TagIcon className="w-4 h-4 inline-block mr-1" />
-                    Food
-                  </span>
-                </TableCell>
-                <TableCell className="text-right">$20.00</TableCell>
-                <TableCell>
-                  <Popover>
-                    <PopoverTrigger>
-                      <Button
-                        className="px-2 py-1 bg-transparent text-black hover:bg-gray-200 active:bg-gray-300 rounded"
-                        type="button"
-                      >
-                        <MoreVerticalIcon className="w-4 h-4" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-40">
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <FileEditIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Edit</span>
-                      </button>
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <ShareIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Share</span>
-                      </button>
-                      <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
-                        <DeleteIcon className="w-4 h-4" />
-                        <span className="text-sm font-medium">Delete</span>
-                      </button>
-                    </PopoverContent>
-                  </Popover>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
         </div>
       </div>
-     </div>
     </div>
   );
 }
