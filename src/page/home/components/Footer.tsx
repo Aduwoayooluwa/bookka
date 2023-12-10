@@ -3,9 +3,9 @@ import "../index.css";
 
 const Footer = () => {
   return (
-    <footer className="bg-white mx-auto text-white">
-      <div className="w-full mx-auto px-4 py-10 md:py-12">
-        <div className="xl:grid xl:grid-cols-4 xl:gap-8">
+    <footer className="bg-[#F6F8FB] mx-auto  ">
+      <div className="w-full mx-auto container px-4 py-10 md:py-12">
+        <div className="xl:grid xl:grid-cols-4 place-item xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
             <Link href="/">
                 <span className="flex items-center py-4 px-2 cursor-pointer font-semibold text-black text-lg">Bookka</span>
@@ -37,7 +37,7 @@ const Footer = () => {
               <div>
                 <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">Contact</h3>
                 <ul className="mt-4 space-y-4">
-                  <li><p className="text-base text-gray-600">support@bookka.com</p></li>
+                  <li><p className="text-base text-gray-600">Contact Us</p></li>
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
@@ -54,7 +54,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="pt-8 mt-8 border-t border-gray-700">
-          <p className="text-base text-gray-800 xl:text-center mb-3">Built With Love By Team Pegasus</p>
+          <p className="text-base text-gray-800 xl:text-center mb-3">Built With 💖 By <Link className="font-semibold" href="https://ferratechnologies.com">Team Pegasus</Link></p>
           <p className="text-base text-gray-800 xl:text-center">
 
             &copy; {new Date().getFullYear()} Bookka. All rights reserved. <Link href="https://ferratechnologies.com">Team Pegasus</Link>
