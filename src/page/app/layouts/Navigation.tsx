@@ -77,7 +77,7 @@ const Navigation = (props: Props) => {
                     })
                 } 
                 
-                <Button className='border absolute bottom-32 border-white hover:bg-blue-600 hover:text-blue-500 bg-white text-blue-600'>Get Started</Button>
+                <Button className='border absolute bottom-32 border-white hover:bg-blue-600 hover:text-blue-500 bg-white text-blue-600'><Link href="/auth">Get Started</Link></Button>
           </motion.ol>
           </motion.aside>
           </AnimatePresence>
