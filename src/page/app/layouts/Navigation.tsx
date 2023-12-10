@@ -40,7 +40,7 @@ const Navigation = (props: Props) => {
         
       </ol>
       
-      <Button className='border hidden md:flex border-blue-600 hover:bg-blue-600 hover:text-white bg-transparent text-blue-600'>Get Started</Button>
+      <Button className='border hidden md:flex border-blue-600 hover:bg-blue-600 hover:text-white bg-transparent text-blue-600'> <Link href="/auth">Get Started</Link></Button>
       <div className='flex md:hidden'>
         <Hamburger toggle={setIsNavOpen} toggled={isNavOpen} />
       </div>
