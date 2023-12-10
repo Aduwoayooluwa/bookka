@@ -1,12 +1,16 @@
 import Image from 'next/image'
 import React from 'react'
 import CheckIcon from "@/assets/icons/check_icon.png";
-
+import { motion } from 'framer-motion';
 type Props = {}
 
 const Boost = (props: Props) => {
   return (
-      <div className='container py-10 md:py-20'>
+        <motion.div
+          
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }} className='container py-10 md:py-20'>
           <div className='flex   items-center flex-col md:flex-row justify-center space-x-0 space-y-6 md:space-y-0 md:space-x-10 '>
               <section className='w-full md:w-[35%]'>
                   <Image src={"/main_2.png"} alt="Main Bookka image" width={600} height={700} />
@@ -37,7 +41,7 @@ const Boost = (props: Props) => {
                   </ol>
               </section>
           </div>
-    </div>
+    </motion.div>
   )
 }
 
