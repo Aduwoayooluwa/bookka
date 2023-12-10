@@ -64,7 +64,7 @@ export default function Page() {
         <div className="flex-grow p-6">
           <div className="flex justify-between items-center">
             <h1 className="text-2xl">Invoice Dashboard</h1>
-            <Link href="/generate" className="px-2 py-1 bg-gray-800 text-white rounded-lg flex items-center space-x-2 text-sm">
+            <Link href="/invoice/generate" className="px-2 py-1 bg-gray-800 text-white rounded-lg flex items-center space-x-2 text-sm">
                 Create Invoice
             </Link>
           </div>
