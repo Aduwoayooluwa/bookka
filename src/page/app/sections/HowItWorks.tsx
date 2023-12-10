@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import { motion } from "framer-motion"
 const steps = [
   {
     title: 'Sign Up',
@@ -21,7 +21,10 @@ const steps = [
 
 const HowItWorksSection = () => {
   return (
-    <div className="py-12 bg-white">
+     <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}className="py-12 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-blue-600 text-center font-semibold text-sm md:text-lg">
           How It Works
@@ -38,7 +41,7 @@ const HowItWorksSection = () => {
           </dl>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
