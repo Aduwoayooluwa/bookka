@@ -14,15 +14,21 @@ import { PostRequest } from "@/api/apiHandler";
 
 export default function CreateDid() {
     const [generatedDid, setGeneratedDid] = useState<string>("");
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
+
+    const [didMessage, setDidMessage] = useState("") // message state managing if the did is generated....
 
     async function onGenerateDid() {
         setIsLoading(true);
+        setDidMessage("Generating your did. Please be patient...")
         try {
             const response = await PostRequest("auth/create-did");   
             console.log(response);
             setGeneratedDid(response?.userDid);
+            
             setIsLoading(false)
+            setDidMessage(response?.message)
+
         }
         catch (error) {
             setIsLoading(false);
@@ -41,6 +47,7 @@ export default function CreateDid() {
                             
                         </textarea>
                         
+                        <p className="text-green-600 text-xs p-2">{ didMessage}</p>
 
                         <Button disabled={isLoading} onClick={onGenerateDid}>{ isLoading ? "Generating.." : "Generate"}</Button>
                     

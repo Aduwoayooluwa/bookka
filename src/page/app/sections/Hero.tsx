@@ -21,7 +21,7 @@ const Hero = (props: Props) => {
 
                     <p className='text-sm font-medium'>Streamline Your Business Finances with Advanced Web5 Technology</p>
 
-                    <Button className='bg-blue-600 my-10 md:my-20'><Link href={"/auth"}>Get Started</Link></Button>
+                    <Button className='bg-blue-600 my-10 md:my-20 hover:bg-transparent hover:text-blue-600'><Link href={"/auth"}>Get Started</Link></Button>
               </section>
               
               <section className=''>
