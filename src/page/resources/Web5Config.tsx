@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import Switch from "react-switch";
 import { PostRequest } from "@/api/apiHandler";
+import { Button } from "@/components/ui/button";
 
 const url = `configure-invoice`
-export default function Web5Config() {
+export default function Web5Config({ setCurrentStep}: Readonly<{setCurrentStep: React.Dispatch<React.SetStateAction<number>>}>) {
+    // state to  manage if the protocol has been configured
     const [protocolEnabled, setProtocolEnabled] = useState(false);
 
     const handleToggleProtocol = async (checked: boolean) => {
         setProtocolEnabled(checked);
         try {
 
+            // api endpoint consumption to set the protocol
             return await PostRequest(url).then((res) => {
                 setProtocolEnabled(checked);
+                setCurrentStep((prev) => prev + 1);
             })
         } catch (error) {
+            // set to false if an error occur
             setProtocolEnabled(false);
         }
 
@@ -37,6 +42,10 @@ export default function Web5Config() {
                     />
                 </label>
             </div>
+
+            <Button className="bg-blue-600" onClick={() => {
+                setCurrentStep((prev) => prev - 1);
+            }}>Back</Button>
 
             {/* <div className="mb-6">
                 <h2 className="text-xl font-semibold mb-2">Additional Settings</h2>

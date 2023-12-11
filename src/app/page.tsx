@@ -1,10 +1,14 @@
-import HomePage from '@/page/home'
-import Image from 'next/image'
+import Index from '@/page/app'
+import React from 'react'
 
-export default function Home() {
+type Props = {}
+
+const page = (props: Props) => {
   return (
-    <main>
-      <HomePage />
-   </main>
+      <div>
+          <Index />
+    </div>
   )
 }
+
+export default page

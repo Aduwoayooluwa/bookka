@@ -1,7 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: "Work Sans", monospace;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -79,5 +84,20 @@
   .mobile_nav {
     margin-top: 3.6rem;
     position: absolute;
+  }
+}
+
+.invoice-container {
+  max-width: 794px;
+  min-height: 1122px;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+@media (max-width: 794px) {
+  .invoice-container {
+    width: 100%;
+    min-height: auto;
   }
 }

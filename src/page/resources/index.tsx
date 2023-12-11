@@ -2,14 +2,17 @@
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
 
 type PreferenceType = 'bookkeeping' | 'invoice';
 
-const PreferenceSelector: React.FC = () => {
+const PreferenceSelector= ({ setCurrentStep}: Readonly<{setCurrentStep: React.Dispatch<React.SetStateAction<number>>}>) => {
+    // state to set the preference of a user. either bookkeeping or invoice. 
   const [preference, setPreference] = useState<PreferenceType | string>("");
     const router = useRouter();
 
-  const handleSelection = (type: PreferenceType) => {
+    const handleSelection = (type: PreferenceType) => {
+    //   function to handle selection. then route to the selected dashboard view
       setPreference(type);
       console.log(type)
 
@@ -48,7 +51,11 @@ const PreferenceSelector: React.FC = () => {
             >
                 Invoice
             </motion.div>
-        </div>
+          </div>
+          
+           <Button className="bg-blue-600" onClick={() => {
+                setCurrentStep((prev) => prev - 1);
+            }}>Back</Button>
       </main>
   );
 };
