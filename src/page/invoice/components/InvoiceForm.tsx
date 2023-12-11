@@ -31,7 +31,7 @@ const InvoiceForm = ({
     sessionStorage.setItem('invoiceData', JSON.stringify(data));
     
     // pass the data and invoice id. nanoid will generate random unique ids. 
-    return PostRequest("api/create-invoice",
+    return PostRequest("create-invoice",
       { ...data, ...businessDetails, ...customerDetails, invoiceNumber: `INVC${nanoid()}` }).then(() => {
             router.push("/invoice/generate/preview")
       })
