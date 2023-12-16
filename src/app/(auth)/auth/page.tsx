@@ -7,6 +7,7 @@ import { TiTick } from "react-icons/ti";
 import PreferenceSelector from "@/page/resources";
 import Web5Config from "@/page/resources/Web5Config";
 import "../../../page/invoice/stepper.css"
+import Login from "@/page/auth/login";
 
 export default function Page() {
   const authSteps = ["Enter DiD", "Configure Protocol", "Choose Preference"];
@@ -37,7 +38,7 @@ export default function Page() {
                         </div>
                         
                         <div className="shadow mt-10">
-                            {currentStep === 1 && (<CreateAccount setCurrentStep={setCurrentStep}  />)}
+                            {currentStep === 1 && (<Login setCurrentStep={setCurrentStep}  />)}
                             {currentStep === 2 && (<Web5Config setCurrentStep={setCurrentStep}/>)}
                             {currentStep === 3 && (<PreferenceSelector setCurrentStep={setCurrentStep} />)}
                       </div>

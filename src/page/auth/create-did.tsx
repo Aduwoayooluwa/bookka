@@ -24,7 +24,7 @@ export default function CreateDid() {
         try {
             const response = await PostRequest("auth/create-did");   
             console.log(response);
-            setGeneratedDid(response?.userDid);
+            setGeneratedDid(response?.userDid?.did);
             
             setIsLoading(false)
             setDidMessage(response?.message)
@@ -37,12 +37,12 @@ export default function CreateDid() {
 
     return (
         <Dialog>
-            <DialogTrigger>You don&apos;t have a DID? Click here to generate one</DialogTrigger>
+            <DialogTrigger className="text-sm">You don&apos;t have a DID? Click here to generate one</DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                 <DialogTitle>Generate your Own DID</DialogTitle>
                     <DialogDescription className="p-3">
-                        <p className="text-xs text-gray-600 md:text-sm">Copy the generated DID, close the modal and paste it on the Access Account page.</p>
+                        <p className="text-xs text-gray-600 md:text-sm">Copy the generated DID, close the modal and paste it on the Registeration page.</p>
                         <textarea value={generatedDid} readOnly className="outline-none p-3 border border-gray.500 w-full h-[200px] overflow-auto" placeholder="Your Generated DID will appeear here..">
                             
                         </textarea>
