@@ -23,7 +23,7 @@ export default function CreateDid() {
         setDidMessage("Generating your did. Please be patient...")
         try {
             const response = await PostRequest("auth/create-did");   
-            console.log(response);
+       
             setGeneratedDid(response?.userDid?.did);
             
             setIsLoading(false)
