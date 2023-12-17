@@ -7,6 +7,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { PostRequest } from '@/api/apiHandler';
+import { useToast } from '@/components/ui/use-toast';
 
 
 const AddTransactionForm = () => {
@@ -17,7 +19,10 @@ const AddTransactionForm = () => {
     const [date, setDate] = useState('');
     const [category, setCategory] = useState('');
 
-    const handleSubmit = (event: React.FormEvent) => {
+    const { toast } = useToast();
+
+
+    const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
         const newTransaction = {
@@ -29,6 +34,19 @@ const AddTransactionForm = () => {
             category
         };
 
+        try {
+            const response = await PostRequest("save-bookkeepping", newTransaction)
+            toast({
+                title: "Saved",
+                description: response?.message
+            })
+        }
+        catch (error) {
+            toast({
+                title: "Error",
+                description: "Ah! chief an Error occured"
+            })
+        }
         console.log(newTransaction);
 
         setDescription('');
