@@ -5,6 +5,7 @@ import { Squash as Hamburger } from "hamburger-react"
 import { motion, AnimatePresence } from "framer-motion";
 import { sideVariants } from '@/page/app/layouts/nav';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 type Props = {
     children: React.ReactNode
@@ -15,16 +16,20 @@ const Layout = ({ children }: Props) => {
 
   return (
       <div className='flex items-start w-full'>
-          <div className='fixed left-0 bg-white'>
-                 <header className="flex justify-between items-center border-b p-4">
-                    <div className="flex items-center space-x-4">
+          <div className='fixed left-0 w-full md:w-fit bg-white'>
+                 <header className="flex justify-between items-center border-b w-full p-4">
+                    <div className="flex w-full justify-between items-center space-x-4">
                     <Image
                         src={"/logo.svg"}
-                        className="hidden md:flex"
+                        className=""
                         width={200}
                         height={100}
                         alt="bookka logo"
                     />
+                    <div className='flex md:hidden'>
+                        <Hamburger toggle={setIsSidebarOpen} toggled={isSidebarOpen} />
+                    </div>
+
                     </div>
                 </header>
                 <aside className="hidden md:block  sticky top-0 h-screen w-56 bg-gray-100 text-gray-800 p-4">
@@ -36,24 +41,21 @@ const Layout = ({ children }: Props) => {
                     <HomeIcon className="w-4 h-4" />
                     <span className="text-sm font-medium">Home</span>
                     </button>
-                    <button className="w-full flex items-center space-x-2 bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-800">
+                    <Link href="/invoice" className="w-full flex items-center space-x-2 bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-800">
                     <WalletIcon className="w-4 h-4" />
                     <span className="text-sm font-medium">Invoices</span>
-                    </button>
-                    <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
+                    </Link>
+                    <Link href="/bookkeeping" className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
                     <UsersIcon className="w-4 h-4" />
                     <span className="text-sm font-medium">Bookkeeping</span>
-                    </button>
+                    </Link>
                     <button className="w-full flex items-center space-x-2 hover:bg-gray-200 active:bg-gray-300 py-2 px-2 rounded-lg text-gray-500">
                     <TicketIcon className="w-4 h-4" />
-                    <span className="text-sm font-medium">Tax</span>
+                    <span className="text-sm font-medium">Profile</span>
                     </button>
                 </nav>
               </aside>
               
-              <div className='flex md:hidden'>
-                <Hamburger toggle={setIsSidebarOpen} toggled={isSidebarOpen} />
-            </div>
 
         {
         isSidebarOpen && 

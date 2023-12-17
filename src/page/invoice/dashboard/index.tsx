@@ -1,10 +1,8 @@
 "use client";
 
 import React from "react";
-import { SelectValue, SelectTrigger, Select } from "@/components/ui/select";
 import { CardContent, Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import {
   TableHead,
   TableRow,
@@ -13,17 +11,15 @@ import {
   TableBody,
   Table,
 } from "@/components/ui/table";
-import {
-  PopoverTrigger,
-  PopoverContent,
-  Popover,
-} from "@/components/ui/popover";
-import { Badge } from "@/components/ui/badge";
 import { ResponsivePie } from "@nivo/pie";
 import Link from "next/link";
 import Layout from "./Layout";
+import { useGetAllInvoices } from "@/lib/fetch-data-hooks";
 
 export default function InvoiceDashboard() {
+
+  const { allInvoices, isLoading, errorMessage } = useGetAllInvoices();
+  
   return (
     <div className="bg-white">
    
@@ -87,10 +83,22 @@ export default function InvoiceDashboard() {
                 type="button"
               >
                 <DownloadIcon className="w-4 h-4" />
-                <span>Download</span>
+                <span>Download/Export</span>
               </Button>
             </div>
-            <Table className="">
+            {
+              isLoading && (<div className="flex justify-center items-center h-64 bg-gray-100 text-gray-800 border border-gray-300 rounded-lg">Loading data...</div>)
+            }
+
+           
+            {
+              allInvoices?.length === 0 ? (
+                <div className="flex justify-center items-center h-64 bg-gray-100 text-gray-800 border border-gray-300 rounded-lg">
+                    <p>{errorMessage ?? "No invoice present"} </p>
+                </div>
+
+              ) : (
+                  <Table className="">
               <TableHeader>
                 <TableRow>
                   <TableHead>Date</TableHead>
@@ -398,7 +406,10 @@ export default function InvoiceDashboard() {
                   </TableCell>
                 </TableRow>
               </TableBody>
-            </Table>
+                  </Table>
+              )
+            }
+            
           </div>
         </div>
       </Layout>

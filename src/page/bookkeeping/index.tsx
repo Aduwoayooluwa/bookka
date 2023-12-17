@@ -3,32 +3,17 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import { useRouter } from "next/navigation";
 import Wave from "@/assets/svgs/Wave"
+import Layout from "../invoice/dashboard/Layout";
+import Bookkeeping from "./dashboard";
 
 export default function Page() {
     const {back} = useRouter()
     return(
-        <div className="w-full relative px-10 md:px-0 text-center h-[100vh] grid place-items-center">
-            Welcome to the bookkeeping Dashboard
-
-            <section className="grid place-items-center w-full">
-                <div className="font-medium text-center text-4xl">
-                Coming Soon in Stage 3....
-
-                
-                </div>
-                <Button onClick={() => {
-                    back();
-                }} className="bg-blue-600 my-5 text-white hover:bg-blue-800 ">Go back</Button>
-            </section>
-
-            <div>
-                
-               
+        <Layout>
+            <div className="pt-5 md:pt-20">
+                <Bookkeeping />
             </div>
-            
-            <div className="absolute bottom-0 w-full">
-                 <Wave />
-            </div>
-        </div>
+
+        </Layout>
     )
 }

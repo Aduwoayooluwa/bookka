@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
+export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
 
 export async function PostRequest(endpoint: string, data?: any) {
 
@@ -17,7 +17,7 @@ export async function PostRequest(endpoint: string, data?: any) {
     }
 }
 
-export async function GetRequest(endpoint: string, data: {}) {
+export async function GetRequest(endpoint: string) {
     try {
         const response = await axios.get(`${baseUrl}/${endpoint}`)
         return response.data
