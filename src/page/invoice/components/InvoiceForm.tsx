@@ -19,8 +19,8 @@ const InvoiceForm = ({
   const { register, handleSubmit, formState: { errors } } = useForm<InvoiceData>();
   const { toast } = useToast();
 
-  const businessDetails = (getSStorage("businessDetails"))
-  const customerDetails = (getSStorage("customerInv"));
+  const businessDetails = JSON.parse((getSStorage("businessDetails")))
+  const customerDetails = JSON.parse((getSStorage("customerInv")))
 
   const invoiceGenerationData = { ...businessDetails, ...customerDetails }
   console.log(invoiceGenerationData);
@@ -35,7 +35,7 @@ const InvoiceForm = ({
     // pass the data and invoice id. nanoid will generate random unique ids. 
     try {
       const response = await PostRequest("create-invoice",
-        { ...data, ...businessDetails, ...customerDetails, invoiceNumber: `INVC${nanoid()}` });
+        { ...data, ...businessDetails, ...customerDetails, invoiceNumber: `INVC${nanoid(4)}`, Did: getSStorage("userDid") });
       console.log(response)
       if (response) {
          toast({

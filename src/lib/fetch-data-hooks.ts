@@ -2,12 +2,16 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { baseUrl } from "@/api/apiHandler";
 import { useToast } from "@/components/ui/use-toast";
+import { getSStorage } from './sStorage';
 
 export function useGetAllInvoices() {
-    const [allInvoices, setAllInvoices] = useState([]);
+    const [allInvoices, setAllInvoices] = useState<any>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+
+    const userDid = getSStorage("userDid");
+
 
     const { toast } = useToast();
 
@@ -16,8 +20,8 @@ export function useGetAllInvoices() {
             setIsLoading(true);
             setIsError(false);
             try {
-                const response = await axios.get(`${baseUrl}get-invoice?userDid=${"userDid"}`);
-                setAllInvoices(response.data);
+                const response = await axios.get(`${baseUrl}get-invoice?Did=${userDid}`);
+                setAllInvoices(response.data.data);
             } catch (error: any) {
                 setIsError(true);
                 toast({
@@ -31,7 +35,10 @@ export function useGetAllInvoices() {
         };
 
         fetchInvoices();
+
     }, [toast]);
+
+    console.log(allInvoices)
 
     return { allInvoices, isLoading, isError, errorMessage };
 }

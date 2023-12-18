@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dialog"
 import { PostRequest } from '@/api/apiHandler';
 import { useToast } from '@/components/ui/use-toast';
+import { getSStorage } from '@/lib/sStorage';
 
 
 const AddTransactionForm = () => {
@@ -30,30 +31,42 @@ const AddTransactionForm = () => {
             description,
             amount: parseFloat(amount),
             type,
-            date,
-            category
+            recordDate: date,
+            category,
+            Did: getSStorage("userDid")
         };
 
         try {
             const response = await PostRequest("save-bookkeepping", newTransaction)
-            toast({
+            
+            if (response) {
+                setDescription('');
+                setAmount('');
+                setType('income');
+                setDate('');
+                setCategory('');
+
+                toast({
                 title: "Saved",
                 description: response?.message
-            })
-        }
-        catch (error) {
-            toast({
+                });
+            }
+            else {
+                toast({
                 title: "Error",
                 description: "Ah! chief an Error occured"
+            })
+            }
+        }
+        catch (error: any) {
+            toast({
+                title: "Error",
+                description: error?.message
             })
         }
         console.log(newTransaction);
 
-        setDescription('');
-        setAmount('');
-        setType('income');
-        setDate('');
-        setCategory('');
+        
     };
 
 
