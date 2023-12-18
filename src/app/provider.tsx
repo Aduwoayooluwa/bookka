@@ -1,4 +1,13 @@
+"use client"
 import { Toaster } from "@/components/ui/toaster"
+import {
+  QueryClient,
+  QueryClientProvider
+} from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
+
+const queryClient = new QueryClient();
 
 export default function GeneralProvider({
   children,
@@ -7,9 +16,12 @@ export default function GeneralProvider({
 }>) {
   return (
     <div>
-      
+      <QueryClientProvider client={queryClient}>
           {children}
-          <Toaster />
+        <Toaster />
+        <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+          
     </div>
   )
 }

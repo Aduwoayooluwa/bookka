@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 type PreferenceType = 'bookkeeping' | 'invoice';
 
@@ -43,7 +44,8 @@ const PreferenceSelector= ({ setCurrentStep}: Readonly<{setCurrentStep: React.Di
                 Bookkeeping
             </motion.div>
 
-            <motion.div 
+              <Link href="/invoice">
+                  <motion.div 
                 className="p-10 m-5 bg-green-500 text-white rounded-lg cursor-pointer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -51,6 +53,7 @@ const PreferenceSelector= ({ setCurrentStep}: Readonly<{setCurrentStep: React.Di
             >
                 Invoice
             </motion.div>
+            </Link>
           </div>
           
            <Button className="bg-blue-600" onClick={() => {

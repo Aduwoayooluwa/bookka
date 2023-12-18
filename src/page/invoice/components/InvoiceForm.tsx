@@ -7,6 +7,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import {nanoid} from "nanoid"
 import { getSStorage } from '@/lib/sStorage';
 import { useRouter } from 'next/navigation';
+import { useToast } from '@/components/ui/use-toast';
 
 type Props = {
 };
@@ -16,9 +17,10 @@ type Props = {
 const InvoiceForm = ({
 }: Readonly<Props>) => {
   const { register, handleSubmit, formState: { errors } } = useForm<InvoiceData>();
+  const { toast } = useToast();
 
-  const businessDetails = (getSStorage("businessDetails"))
-  const customerDetails = (getSStorage("customerInv"));
+  const businessDetails = JSON.parse((getSStorage("businessDetails")))
+  const customerDetails = JSON.parse((getSStorage("customerInv")))
 
   const invoiceGenerationData = { ...businessDetails, ...customerDetails }
   console.log(invoiceGenerationData);
@@ -26,17 +28,33 @@ const InvoiceForm = ({
   // router from useRouter
   const router = useRouter();
 
-  const onSubmit: SubmitHandler<InvoiceData> = data => {
+  const onSubmit: SubmitHandler<InvoiceData> = async data => {
       console.log(data);
     sessionStorage.setItem('invoiceData', JSON.stringify(data));
     
     // pass the data and invoice id. nanoid will generate random unique ids. 
-    return PostRequest("api/create-invoice",
-      { ...data, ...businessDetails, ...customerDetails, invoiceNumber: `INVC${nanoid()}` }).then(() => {
-            router.push("/invoice/generate/preview")
+    try {
+      const response = await PostRequest("create-invoice",
+        { ...data, ...businessDetails, ...customerDetails, invoiceNumber: `INVC${nanoid(4)}`, Did: getSStorage("userDid") });
+      console.log(response)
+      if (response) {
+         toast({
+        title: response?.status?.detail,
+        description: "Awww 😘"
       })
-  };
 
+        router.push("/invoice/generate/preview");
+      }
+      
+    }
+    catch (error: any) {
+      toast({
+        title: "Omoor No vex boss 😣",
+        description: error.message
+      })
+    }
+  };
+  
 
   return (
     <div className="container mx-auto p-4 md:p-20">

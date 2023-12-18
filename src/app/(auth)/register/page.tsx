@@ -7,7 +7,7 @@ const Register = (props: Props) => {
   return (
       <div className="h-screen w-full grid place-items-center">
           <div className="w-full  md:w-[40%]">
-              {/* <CreateAccount /> */}
+              <CreateAccount />
           </div>
     </div>
   )

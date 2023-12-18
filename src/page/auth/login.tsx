@@ -18,19 +18,13 @@ import { useRouter } from "next/navigation";
 import { ssSave } from "@/lib/sStorage";
 import Link from "next/link";
 
-export default function CreateAccount() {
+export default function Login({ setCurrentStep}: Readonly<{setCurrentStep: React.Dispatch<React.SetStateAction<number>>}>) {
 
   const [inputDid, setInputDid] = useState("");
   const [inputDetails, setInputDetails] = useState({
-    userDid: "",
-    fullName: ""
+    userDid: "nothing here",
+    signedVcJwt: ""
   })
-
-  // monitor if  signed JWT is created or not
-  const [isSignedJwtGenerated, setIsSignedJwtGenerated] = useState(false);
-  // save the generated signed JWT VC
-  const [signedJwtGeneratedVC, setSignedJwtGeneratedVC] = useState("")
-
   const { toast } = useToast(); 
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false)
@@ -44,7 +38,7 @@ function handleDidChange(e: React.ChangeEvent<HTMLInputElement>) {
 
 
   async function onAccessAccount() {
-    if (inputDetails.fullName === "" || inputDetails.userDid === "") {
+    if (inputDetails.signedVcJwt === "" || inputDetails.userDid === "") {
       toast({
          title: "Chief Rest!",
           description: "Fill the fields"
@@ -54,23 +48,18 @@ function handleDidChange(e: React.ChangeEvent<HTMLInputElement>) {
  
     setIsLoading(true);
     try {
-       const response = await PostRequest("auth/auth-did", inputDetails)
+       const response = await PostRequest("auth/validate-user", inputDetails)
       ssSave("userDid", inputDid);
-      toast({
-         title: response.message,
-          description: response.description,
-      });
-      console.log(response)
-      if (response.staus !== 400) {
-        setIsSignedJwtGenerated(true);
-        setSignedJwtGeneratedVC(response?.signedVcJwt);
-        setIsLoading(false);
-      }
+       toast({
+          description: response.message,
+        });
+      setCurrentStep((prev) => prev + 1);
+      setIsLoading(false)
     }
     catch (error: any) {
       setIsLoading(false)
       toast({
-          title: "Ah! No vex boss. Error Occured!",
+          title: "Ah! Something went wrong!",
           description: error.message,
         });
     }
@@ -80,9 +69,9 @@ function handleDidChange(e: React.ChangeEvent<HTMLInputElement>) {
   return (
     <Card>
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl">Create your account</CardTitle>
+        <CardTitle className="text-2xl">Login to your account</CardTitle>
         <CardDescription>
-          Enter your Details below to Access your account
+          Enter your DID below to Access your account
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
@@ -98,37 +87,17 @@ function handleDidChange(e: React.ChangeEvent<HTMLInputElement>) {
           </div>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="email">Full Name</Label>
-          <Input value={inputDetails.fullName} required onChange={handleDidChange} id="fullName" type="text" name="fullName" placeholder="Enter Full Name" />
-
-          <Label className="mt-3" htmlFor="email">DID</Label>
-          <Input value={inputDetails.userDid} required onChange={handleDidChange} id="did" type="text" name="userDid" placeholder="Enter DID" />
-
+          <Label htmlFor="email">Enter Signed JWT</Label>
+          <Input value={inputDetails.signedVcJwt} required onChange={handleDidChange} id="pivateKey" type="text" name="signedVcJwt" placeholder="Enter Signed JWT" />
         </div>
       
       </CardContent>
       <CardFooter className="flex-col">
         <div className="w-full my-3">
-          <Button onClick={onAccessAccount} className={`w-full ${isLoading && "bg-gray-700 text-white"}`}>{isLoading ? "Verifying DID.." : "Access account"}</Button>
+          <Button onClick={onAccessAccount} className={`w-full ${isLoading && "bg-gray-700 text-white"}`}>{isLoading ? "Verifying Details.." : "Access account"}</Button>
         </div>
 
-        {
-          isSignedJwtGenerated && (
-            <div>
-              <p className="text-sm font-semibold mt-4">Hello Boss, your generated Signed VC.</p>
-              <Link className="mb-4 mt-1 text-sm text-blue-600" href="/auth">Kindly proceed to login here</Link>
-              <textarea className="text-xs p-3 w-full h-[250px]" readOnly>
-                { signedJwtGeneratedVC ?? ""}
-            </textarea>
-            </div>
-          )
-        }
-
-      {
-          !isSignedJwtGenerated && (
-            <CreateDid /> 
-        )
-      }
+        <Link className="text-sm" href="/register">No account yet? Click here to create one</Link>
       </CardFooter>
 
     </Card>
