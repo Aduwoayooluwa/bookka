@@ -26,6 +26,7 @@ export default function CreateAccount() {
     fullName: ""
   })
 
+  console.log(inputDetails.userDid)
   // monitor if  signed JWT is created or not
   const [isSignedJwtGenerated, setIsSignedJwtGenerated] = useState(false);
   // save the generated signed JWT VC
@@ -56,11 +57,12 @@ function handleDidChange(e: React.ChangeEvent<HTMLInputElement>) {
     try {
        const response = await PostRequest("auth/auth-did", inputDetails)
       ssSave("userDid", inputDetails.userDid);
+      console.log(inputDetails.userDid)
       toast({
          title: response.message,
           description: response.description,
       });
-      console.log(response)
+      
       if (response.staus !== 400) {
         setIsSignedJwtGenerated(true);
         setSignedJwtGeneratedVC(response?.signedVcJwt);
