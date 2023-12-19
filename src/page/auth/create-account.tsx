@@ -55,7 +55,7 @@ function handleDidChange(e: React.ChangeEvent<HTMLInputElement>) {
     setIsLoading(true);
     try {
        const response = await PostRequest("auth/auth-did", inputDetails)
-      ssSave("userDid", inputDid);
+      ssSave("userDid", inputDetails.userDid);
       toast({
          title: response.message,
           description: response.description,

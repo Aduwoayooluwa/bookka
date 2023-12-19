@@ -15,13 +15,3 @@ export function getSStorage(key: string) {
     }
 }
 
-//
-// <span className="px-2 py-1 bg-red-200 text-red-800 rounded-md" >
-//     <TagIcon className="w-4 h-4 inline-block mr-1" />
-//         Office
-//         < /span>
-
-// <span className="px-2 py-1 bg-blue-200 text-blue-800 rounded-md" >
-//     <TagIcon className="w-4 h-4 inline-block mr-1" />
-//         Home
-//         < /span>
