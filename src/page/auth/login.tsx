@@ -49,7 +49,6 @@ function handleDidChange(e: React.ChangeEvent<HTMLInputElement>) {
     setIsLoading(true);
     try {
        const response = await PostRequest("auth/validate-user", inputDetails)
-      ssSave("userDid", inputDid);
        toast({
           description: response.message,
         });
